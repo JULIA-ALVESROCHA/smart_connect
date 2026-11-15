@@ -1,6 +1,6 @@
 # SmartCity Connect · Banco de Dados Integrado
 
-Projeto da disciplina de Banco de Dados (UNIFAL-MG). Equipe: Aurelio Junior, Gustavo Orlando e Julia Rocha.
+Projeto da disciplina de Banco de Dados (UNIFAL-MG). Equipe: Aurelio Junior e Julia Rocha.
 
 Implementação completa, em PostgreSQL 16, dos quatro módulos do nosso Levantamento de Requisitos v1.0 para a cidade fictícia de Nova Esperança Digital:
 
