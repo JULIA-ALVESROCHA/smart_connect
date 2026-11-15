@@ -1,0 +1,32 @@
+  codigo   |                                regra                                 | violacoes | status 
+-----------+----------------------------------------------------------------------+-----------+--------
+ CID-RN01  | CPF duplicado ou inválido                                            |         0 | OK
+ CID-RN02  | Cidadão sem dados mínimos                                            |         0 | OK
+ CID-RF05  | Cidadão ativo sem endereço vigente                                   |         0 | OK
+ CID-RN04  | Endereço iniciado antes do nascimento                                |         0 | OK
+ CID-RN04  | Histórico com lacuna entre endereços consecutivos                    |         0 | OK
+ EDU-RN01  | Aluno sem escola                                                     |         0 | OK
+ EDU-RN03  | Matrícula duplicada por aluno, disciplina e período                  |         0 | OK
+ EDU-RNF03 | Matrícula em ano não ofertado pela escola                            |         0 | OK
+ EDU-RNF03 | Matrícula CURSANDO de aluno não ativo                                |         0 | OK
+ EDU-RNF03 | Matrícula CURSANDO em período encerrado                              |         0 | OK
+ EDU-RNF03 | Matrícula antes do nascimento + 5 anos                               |         0 | OK
+ EDU-RF08  | Disciplina do ano corrente sem professor na escola                   |         0 | OK
+ EDU       | Cidadão aluno e professor ao mesmo tempo                             |         0 | OK
+ EMP-RN01  | Vaga publicada antes da abertura da empresa                          |         0 | OK
+ EMP-RN03  | Duas candidaturas ativas do mesmo candidato na mesma vaga            |         0 | OK
+ EMP-RN04  | Candidatura ativa em vaga que não aceita candidaturas                |         0 | OK
+ EMP-RN04  | Candidatura feita antes da publicação ou depois do encerramento      |         0 | OK
+ EMP-RN05  | Candidatura cujo status atual difere do último registro do histórico |         0 | OK
+ EMP-RN05  | Transição inválida registrada no histórico                           |         0 | OK
+ EMP-RNF04 | Candidatura sem registro inicial (ENVIADA) no histórico              |         0 | OK
+ EMP-RF05  | Vaga com mais contratados que posições                               |         0 | OK
+ EMP-RF05  | Vaga PREENCHIDA sem contratação                                      |         0 | OK
+ EMP       | Candidato abaixo da escolaridade mínima contratado                   |         0 | OK
+ ASS-RN01  | Beneficiário sem cidadão válido                                      |         0 | OK
+ ASS-RN02  | Programa sem critério                                                |         0 | OK
+ ASS-RN04  | Benefício ativo de beneficiário hoje inelegível                      |         0 | OK
+ ASS-RN03  | Atendimento sem data de realização                                   |         0 | OK
+ ASS       | Família ativa sem responsável                                        |         0 | OK
+ ASS       | Atendimento feito em unidade de outro território (CRAS)              |         0 | OK
+

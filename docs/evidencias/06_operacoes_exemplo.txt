@@ -1,0 +1,141 @@
+BEGIN
+SET
+1) CID-UC01: cadastrar Joana e a filha (endereço e telefone na mesma transação)
+ id_cidadao |     cpf     |        nome         | data_nascimento |      nome_mae       |   bairro   
+------------+-------------+---------------------+-----------------+---------------------+------------
+     500007 | 39053344705 | Joana Ribeiro Matos | 1992-03-14      | Lucia Ribeiro Matos | Vila União
+
+2) CID-UC02: Joana muda de endereço; o anterior fica no histórico
+ fn_alterar_endereco 
+---------------------
+              635105
+
+ id_endereco | id_logradouro | numero | data_inicio |  data_fim  
+-------------+---------------+--------+-------------+------------
+      635103 |          3160 | 42     | 2026-11-15  | 2026-11-15
+      635105 |          3454 | 108    | 2026-11-15  | 
+
+3) EDU-UC01 e UC03: Ana vira aluna do 4º ano e é matriculada nas disciplinas do ano
+INSERT 0 1
+ fn_matricular 
+---------------
+       1054368
+       1054369
+       1054370
+       1054371
+       1054372
+       1054373
+       1054374
+       1054375
+
+ cod_disciplina |         disciplina         | situacao 
+----------------+----------------------------+----------
+ EF04-LPO       | Língua Portuguesa - 4º ano | CURSANDO
+ EF04-MAT       | Matemática - 4º ano        | CURSANDO
+ EF04-CIE       | Ciências - 4º ano          | CURSANDO
+ EF04-HIS       | História - 4º ano          | CURSANDO
+ EF04-GEO       | Geografia - 4º ano         | CURSANDO
+ EF04-ART       | Arte - 4º ano              | CURSANDO
+ EF04-EDF       | Educação Física - 4º ano   | CURSANDO
+ EF04-ERE       | Ensino Religioso - 4º ano  | CURSANDO
+
+4) ASS-UC01 e UC02: família cadastrada a partir da base única; Joana vira beneficiária
+INSERT 0 1
+INSERT 0 2
+INSERT 0 1
+ id_familia | codigo_familiar | data_atualizacao | integrantes | renda_total | renda_per_capita | id_cidadao_responsavel 
+------------+-----------------+------------------+-------------+-------------+------------------+------------------------
+      57343 | 99990000001     | 2026-11-15       |           2 |      350.00 |           175.00 |                 500007
+
+5) ASS-UC03: elegibilidade apurada pelo banco, critério a critério
+  codigo   |    tipo_criterio     | exigido |     apurado      | atende 
+-----------+----------------------+---------+------------------+--------
+ PBF       | RENDA_PER_CAPITA_MAX | 218.00  | 175.00           | t
+ PBF       | FREQUENCIA_ESCOLAR   | sim     | 1 de 1 na escola | t
+ BPC-IDOSO | RENDA_PER_CAPITA_MAX | 405.25  | 175.00           | t
+ BPC-IDOSO | IDADE_MIN            | 65.00   | 34               | f
+ BPC-PCD   | RENDA_PER_CAPITA_MAX | 405.25  | 175.00           | t
+ BPC-PCD   | PCD                  | sim     | não              | f
+ QUALIFICA | RENDA_PER_CAPITA_MAX | 810.50  | 175.00           | t
+ QUALIFICA | IDADE_MIN            | 16.00   | 34               | t
+ QUALIFICA | CADASTRO_EMPREGO     | sim     | não              | f
+ MATERIAL  | RENDA_PER_CAPITA_MAX | 810.50  | 175.00           | t
+ MATERIAL  | POSSUI_ALUNO         | sim     | 1 aluno(s)       | t
+ ALIMENTA  | RENDA_PER_CAPITA_MAX | 810.50  | 175.00           | t
+
+ beneficio_pbf 
+---------------
+         83225
+
+ beneficio_material 
+--------------------
+              83226
+
+6) ASS-UC04: atendimento registrado no CRAS do território
+ fn_registrar_atendimento 
+--------------------------
+                   185838
+
+7) EMP-UC03 e UC04: Joana se candidata, avança no processo e é contratada
+INSERT 0 1
+ fn_atualizar_candidatura 
+--------------------------
+ 
+
+ fn_atualizar_candidatura 
+--------------------------
+ 
+
+ fn_atualizar_candidatura 
+--------------------------
+ 
+
+ fn_atualizar_candidatura 
+--------------------------
+ 
+
+ status_anterior | status_novo |    usuario    |     observacao     
+-----------------+-------------+---------------+--------------------
+                 | ENVIADA     | demo_operador | 
+ ENVIADA         | EM_ANALISE  | demo_operador | 
+ EM_ANALISE      | ENTREVISTA  | demo_operador | Entrevista marcada
+ ENTREVISTA      | APROVADA    | demo_operador | 
+ APROVADA        | CONTRATADA  | demo_operador | 
+
+ id_vaga |   status   | data_encerramento 
+---------+------------+-------------------
+      21 | PREENCHIDA | 2026-11-15
+
+8) Agora o Qualifica passa a ser possível (exige cadastro no emprego)
+    tipo_criterio     | apurado | atende 
+----------------------+---------+--------
+ RENDA_PER_CAPITA_MAX | 175.00  | t
+ IDADE_MIN            | 34      | t
+ CADASTRO_EMPREGO     | sim     | t
+
+9) GER-RNF03: tudo o que foi feito, na trilha de auditoria
+         tabela          | operacao | count 
+-------------------------+----------+-------
+ ass.atendimento         | I        |     1
+ ass.beneficiario        | I        |     1
+ ass.beneficio_concedido | I        |     2
+ ass.familia             | I        |     1
+ ass.familia_membro      | I        |     2
+ cid.cidadao             | I        |     2
+ cid.endereco_cidadao    | I        |     3
+ cid.endereco_cidadao    | U        |     1
+ cid.telefone            | I        |     1
+ edu.aluno               | I        |     1
+ edu.matricula           | I        |     8
+ emp.candidato           | I        |     1
+ emp.candidatura         | I        |     1
+ emp.candidatura         | U        |     8
+ emp.vaga                | U        |     1
+
+           data_hora           |    usuario    | operacao |                                                                     campos_alterados                                                                     
+-------------------------------+---------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2026-11-15 19:35:31.980518+00 | demo_operador | I        | {"numero": "42", "data_fim": null, "id_cidadao": 500007, "complemento": null, "data_inicio": "2026-11-15", "id_endereco": 635103, "id_logradouro": 3160}
+ 2026-11-15 19:35:32.042207+00 | demo_operador | U        | {"data_fim": {"de": null, "para": "2026-11-15"}}
+
+ROLLBACK
+Operações desfeitas (ROLLBACK). A base continua igual.

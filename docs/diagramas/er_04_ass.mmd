@@ -1,0 +1,116 @@
+---
+title: "Módulo ASS: Assistência Social"
+---
+erDiagram
+  ass_abrangencia_unidade {
+    smallint id_bairro PK,FK
+    smallint id_unidade FK
+  }
+  ass_atendimento {
+    bigint id_atendimento PK
+    integer id_beneficiario FK
+    integer id_profissional FK
+    smallint id_unidade FK
+    smallint id_tipo FK
+    smallint id_programa FK
+    timestamptz data_hora
+    text descricao
+    varchar encaminhamento
+  }
+  ass_beneficiario {
+    integer id_beneficiario PK
+    integer id_cidadao FK,UK
+    char nis UK
+    boolean pcd
+    date data_cadastro
+    varchar situacao
+  }
+  ass_beneficio_concedido {
+    integer id_beneficio PK
+    integer id_beneficiario FK
+    smallint id_programa FK
+    date data_concessao
+    date data_encerramento
+    varchar situacao
+    numeric valor_mensal
+    varchar motivo_encerramento
+  }
+  ass_criterio_elegibilidade {
+    smallint id_programa PK,FK
+    varchar tipo_criterio PK,FK
+    numeric valor
+  }
+  ass_familia {
+    integer id_familia PK
+    char codigo_familiar UK
+    date data_cadastro
+    date data_atualizacao
+    varchar situacao
+  }
+  ass_familia_membro {
+    integer id_familia PK,FK
+    integer id_cidadao PK,FK
+    date data_entrada PK
+    date data_saida
+    varchar parentesco
+    numeric renda_mensal
+  }
+  ass_profissional {
+    integer id_profissional PK
+    integer id_cidadao FK,UK
+    varchar cargo
+    varchar registro_profissional
+    varchar situacao
+  }
+  ass_programa {
+    smallint id_programa PK
+    varchar codigo UK
+    varchar nome UK
+    varchar esfera
+    varchar base_legal
+    numeric valor_referencia
+    date data_inicio
+    date data_fim
+    boolean ativo
+  }
+  ass_tipo_atendimento {
+    smallint id_tipo PK
+    varchar nome UK
+  }
+  ass_tipo_criterio {
+    varchar codigo PK
+    varchar descricao
+    boolean usa_valor
+  }
+  ass_unidade_atendimento {
+    smallint id_unidade PK
+    varchar nome UK
+    varchar tipo
+    integer id_logradouro FK
+    varchar numero
+  }
+  cid_bairro {
+    _ externo
+  }
+  cid_cidadao {
+    _ externo
+  }
+  cid_logradouro {
+    _ externo
+  }
+  ass_familia ||--}o ass_familia_membro : "id_familia"
+  cid_cidadao ||--}o ass_familia_membro : "id_cidadao"
+  cid_cidadao ||--|o ass_beneficiario : "id_cidadao"
+  ass_programa ||--}o ass_criterio_elegibilidade : "id_programa"
+  ass_tipo_criterio ||--}o ass_criterio_elegibilidade : "tipo_criterio"
+  ass_beneficiario ||--}o ass_beneficio_concedido : "id_beneficiario"
+  ass_programa ||--}o ass_beneficio_concedido : "id_programa"
+  cid_logradouro ||--}o ass_unidade_atendimento : "id_logradouro"
+  cid_bairro ||--|o ass_abrangencia_unidade : "id_bairro"
+  ass_unidade_atendimento ||--}o ass_abrangencia_unidade : "id_unidade"
+  cid_cidadao ||--|o ass_profissional : "id_cidadao"
+  ass_beneficiario ||--}o ass_atendimento : "id_beneficiario"
+  ass_profissional ||--}o ass_atendimento : "id_profissional"
+  ass_unidade_atendimento ||--}o ass_atendimento : "id_unidade"
+  ass_tipo_atendimento ||--}o ass_atendimento : "id_tipo"
+  ass_programa o|--}o ass_atendimento : "id_programa"

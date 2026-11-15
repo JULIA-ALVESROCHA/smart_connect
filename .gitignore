@@ -1,0 +1,5 @@
+backups/
+.pgenv
+dados/gerados/
+__pycache__/
+.DS_Store

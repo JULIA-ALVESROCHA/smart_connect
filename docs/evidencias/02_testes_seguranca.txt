@@ -1,0 +1,70 @@
+== GER-RNF01 autenticacao
+FALHOU |  ?column? 
+----------
+        1
+(1 row)
+== CID (CID-RN05: so o perfil de cadastro altera dados pessoais)
+PASSOU | ana_cadastro     | permite | Cadastro consulta cidadao pelo CPF completo
+          -> 64493510390|Luzia Andrade Matos 
+PASSOU | ana_cadastro     | permite | Cadastro atualiza nome social
+          ->  
+PASSOU | ana_cadastro     | nega    | Cadastro nao apaga cidadao
+          -> ERROR:  permission denied for table cidadao 
+PASSOU | ana_cadastro     | nega    | Cadastro nao le dados da assistencia social
+          -> ERROR:  permission denied for schema ass LINE 1: SELECT * FROM ass.beneficiario LIMIT 1                       
+PASSOU | bruno_escola     | nega    | Escola nao altera dados pessoais do cidadao
+          -> ERROR:  permission denied for table cidadao 
+PASSOU | bruno_escola     | nega    | Escola nao le CPF completo nem filiacao
+          -> ERROR:  permission denied for table cidadao 
+PASSOU | bruno_escola     | permite | Escola ve dados minimos (CPF mascarado)
+          -> ***.935.103-**|Fabiana Andrade Vieira 
+PASSOU | bruno_escola     | permite | Escola localiza cidadao pelo CPF via funcao
+          ->  
+== EDU
+PASSOU | bruno_escola     | permite | Secretaria de educacao registra matricula
+          ->  
+PASSOU | carla_professora | permite | Professor consulta alunos da disciplina
+          -> 11550 
+PASSOU | carla_professora | nega    | Professor nao altera matricula
+          -> ERROR:  permission denied for table matricula 
+PASSOU | carla_professora | nega    | Professor nao ve tabela de alunos com id do cidadao
+          -> ERROR:  permission denied for table aluno 
+== EMP (EMP-RNF02 + RLS por empresa)
+PASSOU | diego_emprego    | permite | Operador de emprego le todas as vagas
+          -> 38301 
+PASSOU | diego_emprego    | nega    | Operador nao altera historico de candidaturas
+          -> ERROR:  permission denied for table candidatura_historico 
+PASSOU | empresa_demo     | permite | Empresa ve vagas
+          -> 0 
+PASSOU | empresa_demo     | nega    | RLS: empresa nao enxerga vagas de outra empresa
+          -> ERROR:  vazio CONTEXT:  PL/pgSQL function inline_code_block line 1 at RAISE 
+PASSOU | empresa_demo     | nega    | RLS: empresa nao publica vaga em nome de outra
+          -> ERROR:  permission denied for table empresa 
+PASSOU | empresa_demo     | nega    | Empresa nao le dados pessoais do candidato
+          -> ERROR:  permission denied for table cidadao 
+== ASS (ASS-RNF01/02 dados sensiveis)
+PASSOU | elisa_cras       | permite | Assistencia le beneficiarios e marca PcD
+          -> 8314 
+PASSOU | elisa_cras       | permite | Assistencia avalia elegibilidade (le EDU/EMP via funcao)
+          -> RENDA_PER_CAPITA_MAX|218.00|563.21|f FREQUENCIA_ESCOLAR|sim|2 de 2 na escola|t 
+PASSOU | elisa_cras       | nega    | Assistencia nao altera atendimento ja registrado
+          -> ERROR:  permission denied for table atendimento 
+PASSOU | elisa_cras       | nega    | Assistencia nao le matriculas diretamente
+          -> ERROR:  permission denied for schema edu LINE 1: SELECT * FROM edu.matricula LIMIT 1                       ^ 
+PASSOU | bruno_escola     | nega    | Escola nao le beneficiarios
+          -> ERROR:  permission denied for schema ass LINE 1: SELECT * FROM ass.beneficiario LIMIT 1                       
+PASSOU | diego_emprego    | nega    | Emprego nao le renda familiar
+          -> ERROR:  permission denied for schema ass LINE 1: SELECT renda_mensal FROM ass.familia_membro LIMIT 1          
+== Relatorios e auditoria
+PASSOU | fabio_gestor     | permite | Gestor le indicadores agregados
+          -> 500000|20|200|50010|3741|13543|2518|28214|57342|71655|31502653.00|61232 
+PASSOU | fabio_gestor     | nega    | Gestor nao le tabela de cidadaos
+          -> ERROR:  permission denied for table cidadao 
+PASSOU | gabi_auditora    | permite | Auditor le a trilha de auditoria
+          -> 0 
+PASSOU | gabi_auditora    | nega    | Auditor nao apaga a trilha
+          -> ERROR:  permission denied for table log_auditoria 
+PASSOU | ana_cadastro     | nega    | Operador nao le a trilha de auditoria
+          -> ERROR:  permission denied for schema aud LINE 1: SELECT * FROM aud.log_auditoria LIMIT 1                      
+-----
+total=30 passou=29 falhou=1

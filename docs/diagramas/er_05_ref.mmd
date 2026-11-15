@@ -1,0 +1,55 @@
+---
+title: "Referência pública (IBGE, CNAE, CBO)"
+---
+erDiagram
+  ref_cbo_ocupacao {
+    char cod_cbo PK
+    varchar titulo
+  }
+  ref_cnae_classe {
+    char cod_classe PK
+    varchar descricao
+    char cod_grupo FK
+  }
+  ref_cnae_divisao {
+    char cod_divisao PK
+    varchar descricao
+    char cod_secao FK
+  }
+  ref_cnae_grupo {
+    char cod_grupo PK
+    varchar descricao
+    char cod_divisao FK
+  }
+  ref_cnae_secao {
+    char cod_secao PK
+    varchar descricao
+  }
+  ref_escolaridade {
+    smallint id_escolaridade PK
+    varchar descricao UK
+  }
+  ref_municipio {
+    integer cod_ibge PK
+    varchar nome
+    smallint cod_uf FK
+    numeric latitude
+    numeric longitude
+    char ddd
+    boolean ficticio
+  }
+  ref_salario_minimo {
+    date vigencia_inicio PK
+    numeric valor
+    varchar ato_legal
+  }
+  ref_uf {
+    smallint cod_uf PK
+    char sigla UK
+    varchar nome UK
+    varchar regiao
+  }
+  ref_uf ||--}o ref_municipio : "cod_uf"
+  ref_cnae_secao ||--}o ref_cnae_divisao : "cod_secao"
+  ref_cnae_divisao ||--}o ref_cnae_grupo : "cod_divisao"
+  ref_cnae_grupo ||--}o ref_cnae_classe : "cod_grupo"

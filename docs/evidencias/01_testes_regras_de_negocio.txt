@@ -1,0 +1,83 @@
+CREATE TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+ n  |     codigo     |                                        teste                                         | resultado |                                              obtido                                               
+----+----------------+--------------------------------------------------------------------------------------+-----------+---------------------------------------------------------------------------------------------------
+  1 | CID-RF01/UC01  | Cadastrar cidadão com endereço e telefone                                            | PASSOU    | id 500001
+  2 | CID-RN01       | CPF duplicado é recusado                                                             | PASSOU    | 23505: duplicate key value violates unique constraint "uq_cidadao_cpf"
+  3 | CID-RN01       | CPF com dígito verificador inválido é recusado                                       | PASSOU    | 23514: value for domain ref.cpf violates check constraint "cpf_check"
+  4 | CID-RN01       | CPF com dígitos repetidos é recusado                                                 | PASSOU    | 23514: value for domain ref.cpf violates check constraint "cpf_check"
+  5 | CID-RN02       | Cadastro sem nome da mãe é recusado                                                  | PASSOU    | 23502: null value in column "nome_mae" of relation "cidadao" violates not-null constraint
+  6 | CID-RN02       | Data de nascimento futura é recusada                                                 | PASSOU    | 23514: new row for relation "cidadao" violates check constraint "cidadao_data_nascimento_check"
+  7 | CID-RN03       | Cidadão com mais de um telefone                                                      | PASSOU    | true
+  8 | CID-RN03       | Dois telefones principais para o mesmo cidadão é recusado                            | PASSOU    | 23505: duplicate key value violates unique constraint "uq_telefone_principal"
+  9 | CID-RF06/UC02  | Alterar endereço preserva o anterior no histórico                                    | PASSOU    | true
+ 10 | CID-RN04       | DELETE de endereço do histórico é bloqueado                                          | PASSOU    | SC101: CID-RN04: historico de enderecos nao pode ser apagado (endereco 635099)
+ 11 | CID-RN04       | Sobrescrever endereço (UPDATE do logradouro) é bloqueado                             | PASSOU    | SC101: CID-RN04: para mudar de endereco use cid.fn_alterar_endereco; o registro anterior e preser
+ 12 | CID-RN04       | Alterar endereço já encerrado é bloqueado                                            | PASSOU    | SC101: CID-RN04: endereco encerrado e imutavel (endereco 635099)
+ 13 | CID-RN04       | Dois endereços vigentes ao mesmo tempo são recusados                                 | PASSOU    | 23P01: conflicting key value violates exclusion constraint "ex_endereco_sem_sobreposicao"
+ 14 | CID-RN04       | Períodos de endereço sobrepostos são recusados                                       | PASSOU    | 23P01: conflicting key value violates exclusion constraint "ex_endereco_sem_sobreposicao"
+ 15 | CID-RF07       | Pesquisa por CPF formatado                                                           | PASSOU    | true
+ 16 | CID-RF07       | Pesquisa por nome sem acento e sem caixa                                             | PASSOU    | true
+ 17 | GER-RNF03      | Auditoria registrou cadastro e mudança de endereço com usuário da aplicação          | PASSOU    | true
+ 18 | EDU-RF05/UC03  | Matricular aluno em disciplina e período letivo                                      | PASSOU    | true
+ 19 | EDU-RN03       | Matrícula duplicada (mesmo aluno, disciplina e período) é recusada                   | PASSOU    | 23505: duplicate key value violates unique constraint "uq_matricula"
+ 20 | EDU-RN03       | Mesma disciplina em outro período é permitida                                        | PASSOU    | true
+ 21 | EDU-RN02       | Matrícula sem aluno é recusada                                                       | PASSOU    | SC201: EDU-RNF03: aluno <NULL> nao esta ativo
+ 22 | EDU-RN02       | Matrícula com disciplina inexistente é recusada                                      | PASSOU    | 23503: insert or update on table "matricula" violates foreign key constraint "matricula_id_discip
+ 23 | EDU-RNF03      | Matrícula em período encerrado é recusada                                            | PASSOU    | SC201: EDU-RNF03: periodo letivo 1 nao esta aberto para matriculas
+ 24 | EDU-RNF03      | Matrícula em ano não ofertado pela escola do aluno é recusada                        | PASSOU    | SC201: EDU-RNF03: a escola do aluno nao oferta o 9 ano
+ 25 | EDU-RNF03      | Matrícula de aluno evadido é recusada                                                | PASSOU    | SC201: EDU-RNF03: aluno 43 nao esta ativo
+ 26 | EDU-RN01       | Aluno sem escola é recusado                                                          | PASSOU    | 23502: null value in column "id_escola" of relation "aluno" violates not-null constraint
+ 27 | EDU-UC01       | Aluno que não é cidadão cadastrado é recusado                                        | PASSOU    | 23503: insert or update on table "aluno" violates foreign key constraint "aluno_id_cidadao_fkey"
+ 28 | EDU-UC01       | Mesmo cidadão cadastrado duas vezes como aluno é recusado                            | PASSOU    | 23505: duplicate key value violates unique constraint "uq_aluno_cidadao"
+ 29 | EDU-RN04       | Código de disciplina repetido é recusado                                             | PASSOU    | 23505: duplicate key value violates unique constraint "uq_disciplina_codigo"
+ 30 | EDU-RN05       | Existem professores com mais de uma disciplina                                       | PASSOU    | true
+ 31 | EDU-RF06       | Consulta de disciplinas de um aluno                                                  | PASSOU    | 27 matrículas
+ 32 | EDU-RF07/RF08  | Alunos de uma disciplina com professor atribuído                                     | PASSOU    | true
+ 33 | EMP-RF02/UC02  | Vaga publicada nasce ABERTA                                                          | PASSOU    | true
+ 34 | EMP-RN01       | Vaga sem empresa é recusada                                                          | PASSOU    | SC301: EMP-UC01: somente empresa ativa publica vagas (empresa <NULL>)
+ 35 | EMP-UC01       | Empresa baixada não publica vaga                                                     | PASSOU    | SC301: EMP-UC01: somente empresa ativa publica vagas (empresa 25)
+ 36 | EMP-RF02       | Vaga com código CBO inexistente é recusada                                           | PASSOU    | 23503: insert or update on table "vaga" violates foreign key constraint "vaga_cod_cbo_fkey"
+ 37 | EMP-RF01       | Empresa com CNPJ inválido é recusada                                                 | PASSOU    | 23514: value for domain ref.cnpj violates check constraint "cnpj_check"
+ 38 | EMP-RF04/RN05  | Candidatura criada com status ENVIADA e registrada no histórico                      | PASSOU    | true
+ 39 | EMP-RN03       | Segunda candidatura ativa à mesma vaga é recusada                                    | PASSOU    | 23505: duplicate key value violates unique constraint "uq_candidatura_ativa"
+ 40 | EMP-RN05       | Status inexistente é recusado                                                        | PASSOU    | SC302: EMP-RN05: transicao de candidatura ENVIADA -> PERDIDA nao permitida
+ 41 | EMP-RN05       | Transição inválida (ENVIADA -> CONTRATADA) é recusada                                | PASSOU    | SC302: EMP-RN05: transicao de candidatura ENVIADA -> CONTRATADA nao permitida
+ 42 | EMP-RN02       | Trocar a vaga de uma candidatura é recusado                                          | PASSOU    | SC302: EMP-RN02: candidato, vaga e data de uma candidatura nao podem ser alterados
+ 43 | EMP-RF06/RNF04 | Cada mudança de status gera linha no histórico com observação                        | PASSOU    | true
+ 44 | EMP-RN03       | Após candidatura recusada, nova candidatura à mesma vaga é permitida                 | PASSOU    | true
+ 45 | EMP-RNF04      | Histórico de candidatura não pode ser apagado                                        | PASSOU    | SC303: EMP-RNF04: o historico de candidaturas nao pode ser alterado nem apagado
+ 46 | EMP-RNF04      | Histórico de candidatura não pode ser alterado                                       | PASSOU    | SC303: EMP-RNF04: o historico de candidaturas nao pode ser alterado nem apagado
+ 47 | EMP-RF05       | Contratação que completa as posições fecha a vaga como PREENCHIDA                    | PASSOU    | true
+ 48 | EMP-RN04       | Candidatura a vaga não aberta é recusada                                             | PASSOU    | SC301: EMP-RN04: a vaga 38302 esta PREENCHIDA e nao recebe candidaturas
+ 49 | EMP-RF05       | Reabrir vaga preenchida (transição inválida) é recusado                              | PASSOU    | SC302: EMP-RF05: transicao de vaga PREENCHIDA -> ABERTA nao permitida
+ 50 | EMP-RF05       | Encerrar vaga recusa as candidaturas ativas e registra no histórico                  | PASSOU    | true
+ 51 | EMP-RF07       | Consulta de vagas abertas por área                                                   | PASSOU    | true
+ 52 | EMP-RF08       | Consulta de candidatos por vaga e empresa                                            | PASSOU    | true
+ 53 | ASS-RN01       | Beneficiário sem cidadão cadastrado é recusado                                       | PASSOU    | 23503: insert or update on table "beneficiario" violates foreign key constraint "beneficiario_id_
+ 54 | ASS-UC01       | Integrante de família que não é cidadão é recusado                                   | PASSOU    | 23503: insert or update on table "familia_membro" violates foreign key constraint "familia_membro
+ 55 | ASS-UC01       | Cidadão em duas famílias ao mesmo tempo é recusado                                   | PASSOU    | 23505: duplicate key value violates unique constraint "uq_membro_familia_atual"
+ 56 | ASS-RN02       | Programa sem critério de elegibilidade é recusado no COMMIT                          | PASSOU    | SC403: ASS-RN02: o programa 7 precisa de ao menos um criterio de elegibilidade
+ 57 | ASS-RF03/RN02  | Programa com critério é aceito                                                       | PASSOU    | true
+ 58 | ASS-RN02       | Critério numérico sem valor é recusado                                               | PASSOU    | SC403: ASS-RN02: o criterio RENDA_PER_CAPITA_MAX exige valor
+ 59 | ASS-RF04/UC03  | Beneficiário elegível é vinculado ao programa                                        | PASSOU    | true
+ 60 | ASS-RNF04      | Segundo vínculo em aberto no mesmo programa é recusado                               | PASSOU    | 23505: duplicate key value violates unique constraint "uq_beneficio_em_aberto"
+ 61 | ASS-RN04       | Família acima da renda per capita do PBF é recusada                                  | PASSOU    | SC401: ASS-RN04: beneficiario 1 nao e elegivel ao programa 1: RENDA_PER_CAPITA_MAX (exigido 218.0
+ 62 | ASS-RN04       | Menor de 65 anos no BPC Idoso é recusado                                             | PASSOU    | SC401: ASS-RN04: beneficiario 4 nao e elegivel ao programa 2: IDADE_MIN (exigido 65.00, apurado 2
+ 63 | ASS-RN04       | Integração EMP: quem não está no cadastro de emprego não entra no Qualifica          | PASSOU    | SC401: ASS-RN04: beneficiario 1 nao e elegivel ao programa 4: CADASTRO_EMPREGO (exigido sim, apur
+ 64 | ASS-RN04 x EDU | Evasão escolar de criança da família torna o PBF inelegível (critério de frequência) | PASSOU    | RENDA_PER_CAPITA_MAX=true FREQUENCIA_ESCOLAR=false
+ 65 | ASS-RF05/RN05  | Novo atendimento é somado ao histórico, sem apagar os anteriores                     | PASSOU    | true
+ 66 | ASS-RN03       | Atendimento sem beneficiário é recusado                                              | PASSOU    | 23502: null value in column "id_beneficiario" of relation "atendimento" violates not-null constra
+ 67 | ASS-RN03       | Atendimento sem data é recusado                                                      | PASSOU    | 23502: null value in column "data_hora" of relation "atendimento" violates not-null constraint
+ 68 | ASS-RN05       | Alterar atendimento é bloqueado                                                      | PASSOU    | SC402: ASS-RN05: atendimento registrado nao pode ser alterado nem apagado; registre um novo atend
+ 69 | ASS-RN05       | Apagar atendimento é bloqueado                                                       | PASSOU    | SC402: ASS-RN05: atendimento registrado nao pode ser alterado nem apagado; registre um novo atend
+ 70 | ASS-RF06       | Histórico de atendimentos do beneficiário em ordem                                   | PASSOU    | true
+ 71 | ASS-RF07       | Famílias atendidas por programa                                                      | PASSOU    | true
+ 72 | ASS-RF08       | Atendimentos por região                                                              | PASSOU    | true
+ 73 | GER-RNF03      | Trilha de auditoria não pode ser apagada                                             | PASSOU    | SC901: GER-RNF03: a trilha de auditoria nao pode ser alterada nem apagada
+ 74 | GER-RNF03      | Trilha de auditoria não pode ser alterada                                            | PASSOU    | SC901: GER-RNF03: a trilha de auditoria nao pode ser alterada nem apagada
+ 75 | GER-RNF03      | Operações dos 4 módulos auditadas neste teste                                        | PASSOU    | ass,cid,edu,emp
+ total | passou | falhou 
+-------+--------+--------
+    75 |     75 |      0

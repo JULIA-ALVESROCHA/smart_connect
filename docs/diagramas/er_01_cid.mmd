@@ -1,0 +1,60 @@
+---
+title: "Módulo CID: Cadastro de Cidadãos"
+---
+erDiagram
+  cid_bairro {
+    smallint id_bairro PK
+    varchar nome UK
+    smallint id_regiao FK
+  }
+  cid_cidadao {
+    integer id_cidadao PK
+    ref_cpf cpf UK
+    varchar nome
+    varchar nome_social
+    date data_nascimento
+    char sexo
+    varchar nome_mae
+    integer cod_municipio_nascimento FK
+    varchar email
+    varchar situacao
+    timestamptz data_cadastro
+    timestamptz data_atualizacao
+  }
+  cid_endereco_cidadao {
+    integer id_endereco PK
+    integer id_cidadao FK
+    integer id_logradouro FK
+    varchar numero
+    varchar complemento
+    date data_inicio
+    date data_fim
+  }
+  cid_logradouro {
+    integer id_logradouro PK
+    ref_cep cep UK
+    varchar tipo
+    varchar nome
+    smallint id_bairro FK
+  }
+  cid_regiao {
+    smallint id_regiao PK
+    varchar nome UK
+  }
+  cid_telefone {
+    integer id_telefone PK
+    integer id_cidadao FK
+    char ddd
+    varchar numero
+    varchar tipo
+    boolean principal
+  }
+  ref_municipio {
+    _ externo
+  }
+  cid_regiao ||--}o cid_bairro : "id_regiao"
+  cid_bairro ||--}o cid_logradouro : "id_bairro"
+  ref_municipio o|--}o cid_cidadao : "cod_municipio_nascimento"
+  cid_cidadao ||--}o cid_telefone : "id_cidadao"
+  cid_cidadao ||--}o cid_endereco_cidadao : "id_cidadao"
+  cid_logradouro ||--}o cid_endereco_cidadao : "id_logradouro"

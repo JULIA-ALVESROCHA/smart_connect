@@ -1,0 +1,186 @@
+---
+title: "SmartCity Connect: visão geral (entidades e cardinalidades)"
+---
+erDiagram
+  ass_abrangencia_unidade {
+    _ _
+  }
+  ass_atendimento {
+    _ _
+  }
+  ass_beneficiario {
+    _ _
+  }
+  ass_beneficio_concedido {
+    _ _
+  }
+  ass_criterio_elegibilidade {
+    _ _
+  }
+  ass_familia {
+    _ _
+  }
+  ass_familia_membro {
+    _ _
+  }
+  ass_profissional {
+    _ _
+  }
+  ass_programa {
+    _ _
+  }
+  ass_tipo_atendimento {
+    _ _
+  }
+  ass_tipo_criterio {
+    _ _
+  }
+  ass_unidade_atendimento {
+    _ _
+  }
+  cid_bairro {
+    _ _
+  }
+  cid_cidadao {
+    _ _
+  }
+  cid_endereco_cidadao {
+    _ _
+  }
+  cid_logradouro {
+    _ _
+  }
+  cid_regiao {
+    _ _
+  }
+  cid_telefone {
+    _ _
+  }
+  edu_aluno {
+    _ _
+  }
+  edu_area_conhecimento {
+    _ _
+  }
+  edu_atribuicao_docente {
+    _ _
+  }
+  edu_componente_curricular {
+    _ _
+  }
+  edu_disciplina {
+    _ _
+  }
+  edu_escola {
+    _ _
+  }
+  edu_matricula {
+    _ _
+  }
+  edu_periodo_letivo {
+    _ _
+  }
+  edu_professor {
+    _ _
+  }
+  emp_area_profissional {
+    _ _
+  }
+  emp_candidato {
+    _ _
+  }
+  emp_candidatura {
+    _ _
+  }
+  emp_candidatura_historico {
+    _ _
+  }
+  emp_empresa {
+    _ _
+  }
+  emp_status_candidatura {
+    _ _
+  }
+  emp_status_vaga {
+    _ _
+  }
+  emp_transicao_candidatura {
+    _ _
+  }
+  emp_transicao_vaga {
+    _ _
+  }
+  emp_usuario_empresa {
+    _ _
+  }
+  emp_vaga {
+    _ _
+  }
+  ref_cbo_ocupacao {
+    _ externo
+  }
+  ref_cnae_classe {
+    _ externo
+  }
+  ref_escolaridade {
+    _ externo
+  }
+  ref_municipio {
+    _ externo
+  }
+  cid_regiao ||--}o cid_bairro : "id_regiao"
+  cid_bairro ||--}o cid_logradouro : "id_bairro"
+  edu_componente_curricular ||--}o edu_disciplina : "id_componente"
+  emp_vaga ||--}o emp_candidatura : "id_vaga"
+  ref_municipio o|--}o cid_cidadao : "cod_municipio_nascimento"
+  cid_cidadao ||--}o cid_telefone : "id_cidadao"
+  cid_cidadao ||--}o cid_endereco_cidadao : "id_cidadao"
+  cid_logradouro ||--}o cid_endereco_cidadao : "id_logradouro"
+  edu_escola ||--}o edu_aluno : "id_escola"
+  emp_status_candidatura ||--}o emp_candidatura : "status"
+  cid_logradouro ||--}o edu_escola : "id_logradouro"
+  edu_area_conhecimento ||--}o edu_componente_curricular : "id_area"
+  cid_cidadao ||--|o edu_aluno : "id_cidadao"
+  cid_cidadao ||--|o edu_professor : "id_cidadao"
+  edu_escola ||--}o edu_atribuicao_docente : "id_escola"
+  edu_disciplina ||--}o edu_atribuicao_docente : "id_disciplina"
+  edu_periodo_letivo ||--}o edu_atribuicao_docente : "id_periodo"
+  edu_professor ||--}o edu_atribuicao_docente : "id_professor"
+  edu_aluno ||--}o edu_matricula : "id_aluno"
+  edu_disciplina ||--}o edu_matricula : "id_disciplina"
+  edu_periodo_letivo ||--}o edu_matricula : "id_periodo"
+  emp_candidatura ||--}o emp_candidatura_historico : "id_candidatura"
+  ref_cnae_classe ||--}o emp_empresa : "cod_cnae_classe"
+  cid_logradouro ||--}o emp_empresa : "id_logradouro"
+  emp_status_vaga ||--}o emp_transicao_vaga : "de"
+  emp_status_vaga ||--}o emp_transicao_vaga : "para"
+  emp_status_candidatura ||--}o emp_transicao_candidatura : "de"
+  emp_status_candidatura ||--}o emp_transicao_candidatura : "para"
+  emp_candidato ||--}o emp_candidatura : "id_candidato"
+  emp_empresa ||--}o emp_vaga : "id_empresa"
+  emp_area_profissional ||--}o emp_vaga : "id_area"
+  ref_cbo_ocupacao ||--}o emp_vaga : "cod_cbo"
+  ref_escolaridade ||--}o emp_vaga : "id_escolaridade_minima"
+  emp_status_vaga ||--}o emp_vaga : "status"
+  cid_cidadao ||--|o emp_candidato : "id_cidadao"
+  ref_escolaridade ||--}o emp_candidato : "id_escolaridade"
+  emp_area_profissional o|--}o emp_candidato : "id_area_interesse"
+  emp_status_candidatura o|--}o emp_candidatura_historico : "status_anterior"
+  emp_status_candidatura ||--}o emp_candidatura_historico : "status_novo"
+  ass_familia ||--}o ass_familia_membro : "id_familia"
+  cid_cidadao ||--}o ass_familia_membro : "id_cidadao"
+  cid_cidadao ||--|o ass_beneficiario : "id_cidadao"
+  ass_programa ||--}o ass_criterio_elegibilidade : "id_programa"
+  ass_tipo_criterio ||--}o ass_criterio_elegibilidade : "tipo_criterio"
+  ass_beneficiario ||--}o ass_beneficio_concedido : "id_beneficiario"
+  ass_programa ||--}o ass_beneficio_concedido : "id_programa"
+  cid_logradouro ||--}o ass_unidade_atendimento : "id_logradouro"
+  cid_bairro ||--|o ass_abrangencia_unidade : "id_bairro"
+  ass_unidade_atendimento ||--}o ass_abrangencia_unidade : "id_unidade"
+  cid_cidadao ||--|o ass_profissional : "id_cidadao"
+  ass_beneficiario ||--}o ass_atendimento : "id_beneficiario"
+  ass_profissional ||--}o ass_atendimento : "id_profissional"
+  ass_unidade_atendimento ||--}o ass_atendimento : "id_unidade"
+  ass_tipo_atendimento ||--}o ass_atendimento : "id_tipo"
+  ass_programa o|--}o ass_atendimento : "id_programa"
+  emp_empresa ||--}o emp_usuario_empresa : "id_empresa"

@@ -1,0 +1,123 @@
+---
+title: "Módulo EMP: Emprego e Desenvolvimento Econômico"
+---
+erDiagram
+  cid_cidadao {
+    _ externo
+  }
+  cid_logradouro {
+    _ externo
+  }
+  emp_area_profissional {
+    smallint id_area PK
+    varchar nome UK
+  }
+  emp_candidato {
+    integer id_candidato PK
+    integer id_cidadao FK,UK
+    smallint id_escolaridade FK
+    smallint id_area_interesse FK
+    numeric pretensao_salarial
+    text resumo_profissional
+    date data_cadastro
+    varchar situacao
+  }
+  emp_candidatura {
+    integer id_candidatura PK
+    integer id_candidato FK
+    integer id_vaga FK
+    timestamptz data_candidatura
+    varchar status FK
+    timestamptz data_status
+  }
+  emp_candidatura_historico {
+    bigint id_historico PK
+    integer id_candidatura FK
+    varchar status_anterior FK
+    varchar status_novo FK
+    timestamptz data_hora
+    varchar usuario
+    varchar observacao
+  }
+  emp_empresa {
+    integer id_empresa PK
+    ref_cnpj cnpj UK
+    varchar razao_social
+    varchar nome_fantasia
+    char cod_cnae_classe FK
+    varchar porte
+    integer id_logradouro FK
+    varchar numero
+    varchar email
+    varchar telefone
+    date data_abertura
+    varchar situacao
+    timestamptz data_cadastro
+  }
+  emp_status_candidatura {
+    varchar codigo PK
+    varchar descricao
+    boolean ativa
+  }
+  emp_status_vaga {
+    varchar codigo PK
+    varchar descricao
+    boolean aceita_candidatura
+  }
+  emp_transicao_candidatura {
+    varchar de PK,FK
+    varchar para PK,FK
+  }
+  emp_transicao_vaga {
+    varchar de PK,FK
+    varchar para PK,FK
+  }
+  emp_usuario_empresa {
+    name usuario PK
+    integer id_empresa FK
+  }
+  emp_vaga {
+    integer id_vaga PK
+    integer id_empresa FK
+    smallint id_area FK
+    char cod_cbo FK
+    varchar titulo
+    text descricao
+    varchar tipo_contrato
+    numeric salario
+    smallint qtd_posicoes
+    smallint id_escolaridade_minima FK
+    date data_publicacao
+    date data_encerramento
+    varchar status FK
+  }
+  ref_cbo_ocupacao {
+    _ externo
+  }
+  ref_cnae_classe {
+    _ externo
+  }
+  ref_escolaridade {
+    _ externo
+  }
+  emp_vaga ||--}o emp_candidatura : "id_vaga"
+  emp_status_candidatura ||--}o emp_candidatura : "status"
+  emp_candidatura ||--}o emp_candidatura_historico : "id_candidatura"
+  ref_cnae_classe ||--}o emp_empresa : "cod_cnae_classe"
+  cid_logradouro ||--}o emp_empresa : "id_logradouro"
+  emp_status_vaga ||--}o emp_transicao_vaga : "de"
+  emp_status_vaga ||--}o emp_transicao_vaga : "para"
+  emp_status_candidatura ||--}o emp_transicao_candidatura : "de"
+  emp_status_candidatura ||--}o emp_transicao_candidatura : "para"
+  emp_candidato ||--}o emp_candidatura : "id_candidato"
+  emp_empresa ||--}o emp_vaga : "id_empresa"
+  emp_area_profissional ||--}o emp_vaga : "id_area"
+  ref_cbo_ocupacao ||--}o emp_vaga : "cod_cbo"
+  ref_escolaridade ||--}o emp_vaga : "id_escolaridade_minima"
+  emp_status_vaga ||--}o emp_vaga : "status"
+  cid_cidadao ||--|o emp_candidato : "id_cidadao"
+  ref_escolaridade ||--}o emp_candidato : "id_escolaridade"
+  emp_area_profissional o|--}o emp_candidato : "id_area_interesse"
+  emp_status_candidatura o|--}o emp_candidatura_historico : "status_anterior"
+  emp_status_candidatura ||--}o emp_candidatura_historico : "status_novo"
+  emp_empresa ||--}o emp_usuario_empresa : "id_empresa"

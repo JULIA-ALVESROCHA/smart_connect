@@ -1,0 +1,301 @@
+== Q01 CID-RF07 | Busca por nome aproximado (função + trigramas)
+ id_cidadao |     cpf     |             nome              | data_nascimento |      nome_mae      |       bairro        
+------------+-------------+-------------------------------+-----------------+--------------------+---------------------
+     483505 | 41614019657 | Maria Aparecida Silva Neves   | 1956-01-23      | Elza Silva         | Parque das Águas
+     168431 | 83596619874 | Maria Aparecida Silva Rocha   | 1950-11-23      | Maria Silva Santos | São Judas
+     396434 | 46123269623 | Maria Aparecida Silva Castro  | 1950-10-08      | Maria Silva Santos | Boa Esperança
+      76742 | 19028541012 | Maria Aparecida Silva Freitas | 1948-05-23      | Lúcia Silva Souza  | Distrito Industrial
+     436430 | 14730000250 | Maria Aparecida Silva Queiroz | 1953-03-26      | Helena Silva       | Vila Operária
+
+== Q02 CID-UC03 | Cidadão com endereço vigente e histórico completo (JOIN + LEFT JOIN + ORDER BY)
+        nome        |             endereco              |      bairro      | data_inicio |  data_fim  | situacao  
+--------------------+-----------------------------------+------------------+-------------+------------+-----------
+ Elen Brito Barbosa | Alameda Josefa Souza Cardoso, 910 | Morada do Sol    | 2002-03-02  | 2010-11-17 | histórico
+ Elen Brito Barbosa | Avenida Ana Oliveira Santos, 849  | Parque das Águas | 2010-11-17  | 2014-02-21 | histórico
+ Elen Brito Barbosa | Avenida Raimunda Almeida, 1126    | Boa Esperança    | 2014-02-21  |            | vigente
+
+== Q03 CID-RF06 | Fluxo migratório entre regiões: de onde vieram os moradores atuais (LAG em janela)
+ veio_de | mora_em | cidadaos 
+---------+---------+----------
+ Leste   | Sul     |     4833
+ Sul     | Leste   |     4746
+ Norte   | Leste   |     4685
+ Leste   | Norte   |     4636
+ Oeste   | Leste   |     4588
+ Leste   | Centro  |     4571
+ Centro  | Leste   |     4539
+ Leste   | Oeste   |     4490
+
+== Q04 CID-RN03 | Distribuição da quantidade de telefones por cidadão (subconsulta no FROM)
+ qtd_telefones | cidadaos 
+---------------+----------
+             0 |   136990
+             1 |   303854
+             2 |    59156
+
+== Q05 EDU-RF06 | Disciplinas de um aluno por período (visão do módulo)
+ ano_letivo | cod_disciplina |         disciplina         | situacao | nota_final 
+------------+----------------+----------------------------+----------+------------
+       2026 | EF01-ART       | Arte - 1º ano              | CURSANDO |           
+       2026 | EF01-CIE       | Ciências - 1º ano          | CURSANDO |           
+       2026 | EF01-EDF       | Educação Física - 1º ano   | CURSANDO |           
+       2026 | EF01-ERE       | Ensino Religioso - 1º ano  | CURSANDO |           
+       2026 | EF01-GEO       | Geografia - 1º ano         | CURSANDO |           
+       2026 | EF01-HIS       | História - 1º ano          | CURSANDO |           
+       2026 | EF01-LPO       | Língua Portuguesa - 1º ano | CURSANDO |           
+       2026 | EF01-MAT       | Matemática - 1º ano        | CURSANDO |           
+
+== Q06 EDU-RF07/RF08 | Turma de Matemática do 5º ano de uma escola com professor (visão + filtro)
+     ra     |           aluno            | situacao  |                  professores                  
+------------+----------------------------+-----------+-----------------------------------------------
+ RA82996195 | Aline Fernandes Fernandes  | CANCELADA | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA79233381 | Aline Santos Santos        | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA77056667 | Ana Raiane Moreira Moreira | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA79862612 | Ana Souza Souza            | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA20288353 | Andressa Santana Santana   | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA49741702 | Bárbara Barbosa Barbosa    | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA78299692 | Daniel Lopes Lopes         | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA67948204 | Danilo Silva Silva         | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA74805420 | Diana Dias Dias            | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+ RA40485681 | Eduarda Costa Costa        | CURSANDO  | Bruno Correia Ribeiro, Sandra Pereira Barbosa
+
+== Q07 EDU | Taxa de aprovação por componente e ano letivo (GROUP BY + FILTER)
+ ano  |    componente     | matriculas | pct_aprovacao | nota_media 
+------+-------------------+------------+---------------+------------
+ 2024 | Língua Portuguesa |      32638 |          96.5 |       7.33
+ 2024 | Matemática        |      32638 |          96.6 |       7.32
+ 2024 | Língua Inglesa    |      10524 |          97.8 |       7.37
+ 2024 | História          |      32638 |          98.2 |       7.37
+ 2024 | Arte              |      32638 |          98.3 |       7.37
+ 2024 | Geografia         |      32638 |          98.3 |       7.38
+ 2024 | Ciências          |      32638 |          98.3 |       7.38
+ 2024 | Educação Física   |      32638 |          98.3 |       7.37
+ 2024 | Ensino Religioso  |      32638 |          98.3 |       7.38
+ 2025 | Matemática        |      41284 |          94.8 |       7.26
+ 2025 | Língua Portuguesa |      41284 |          94.8 |       7.27
+ 2025 | História          |      41284 |          97.2 |       7.34
+ 2025 | Língua Inglesa    |      15822 |          97.2 |       7.34
+ 2025 | Educação Física   |      41284 |          97.3 |       7.35
+ 2025 | Ensino Religioso  |      41284 |          97.3 |       7.36
+ 2025 | Arte              |      41284 |          97.4 |       7.35
+ 2025 | Geografia         |      41284 |          97.5 |       7.35
+ 2025 | Ciências          |      41284 |          97.5 |       7.34
+
+== Q08 EDU | Escolas com mais alunos por professor no ano corrente (RANK)
+                       escola                       |       bairro        | alunos_ativos | professores | alunos_por_professor | posicao 
+----------------------------------------------------+---------------------+---------------+-------------+----------------------+---------
+ Escola Municipal Professor Antônio Almeida Pereira | Vila Esperança      |           242 |           9 |                 26.9 |       1
+ Escola Municipal Professora Laura Gomes Moreira    | Vila Esperança      |           241 |           9 |                 26.8 |       2
+ Escola Municipal Padre João Santana Silva          | Vila Esperança      |           238 |           9 |                 26.4 |       3
+ Escola Municipal Professora Edna Machado Lima      | Bela Vista          |           203 |           8 |                 25.4 |       4
+ Escola Municipal Dona Olivia Moraes Ferreira       | Nova Aurora         |           200 |           8 |                 25.0 |       5
+ Escola Municipal Doutor Alcides Barbosa Santana    | Cidade Nova         |           199 |           8 |                 24.9 |       6
+ Escola Municipal Prefeito Luís Souza Gonçalves     | Parque das Águas    |           198 |           8 |                 24.8 |       7
+ Escola Municipal Doutor Vicente Barbosa Pereira    | Distrito Industrial |           196 |           8 |                 24.5 |       8
+
+== Q09 EDU-RN05 | Professores que lecionam em mais de uma escola (HAVING)
+ registro_funcional | nome | escolas | disciplinas 
+--------------------+------+---------+-------------
+
+== Q10 EMP-RF07 | Slide do professor: vagas abertas por área
+            area             | vagas_abertas | posicoes | salario_medio | pct_do_total 
+-----------------------------+---------------+----------+---------------+--------------
+ Administração e Finanças    |           562 |      837 |       3952.87 |         22.3
+ Comércio e Vendas           |           442 |      626 |       2670.21 |         17.6
+ Atendimento e Telemarketing |           318 |      444 |       2222.98 |         12.6
+ Logística e Transporte      |           289 |      447 |       2465.71 |         11.5
+ Indústria e Produção        |           181 |      272 |       3496.80 |          7.2
+ Serviços Gerais e Segurança |           180 |      261 |       2004.02 |          7.1
+ Alimentação e Hospitalidade |           150 |      220 |       2422.10 |          6.0
+ Construção Civil            |           130 |      183 |       3745.08 |          5.2
+ Tecnologia da Informação    |            95 |      139 |       6936.34 |          3.8
+ Saúde                       |            74 |       95 |       3517.51 |          2.9
+ Educação                    |            59 |       85 |       3574.98 |          2.3
+ Agropecuária                |            38 |       85 |       2668.73 |          1.5
+
+== Q11 EMP | Slide do professor: empresas que mais contratam (top 10)
+ posicao |                empresa                | porte  |                         setor_cnae                         | contratacoes 
+---------+---------------------------------------+--------+------------------------------------------------------------+--------------
+       1 | Indústria Fernandes                   | GRANDE | Indústrias de Transformação                                |          154
+       2 | Fábrica Moraes                        | GRANDE | Indústrias de Transformação                                |          141
+       3 | Obras Monteiro                        | GRANDE | Construção                                                 |          139
+       4 | Cantina Jardim Primavera              | GRANDE | Alojamento e Alimentação                                   |          132
+       5 | Instituto Fernandes                   | GRANDE | Educação                                                   |          107
+       6 | Obras Silva                           | GRANDE | Construção                                                 |          105
+       7 | Fábrica Cavalcanti                    | GRANDE | Indústrias de Transformação                                |          101
+       8 | Machado & Alves Recursos Humanos S.A. | GRANDE | Atividades Administrativas e Serviços Complementares       |           97
+       9 | Casa Santana                          | GRANDE | Comércio; Reparação de Veículos Automotores e Motocicletas |           95
+       9 | Log Monteiro                          | GRANDE | Transporte, Armazenagem e Correio                          |           95
+      10 | Casa Campos                           | GRANDE | Comércio; Reparação de Veículos Automotores e Motocicletas |           93
+
+== Q12 EMP-RF08 | Slide do professor: candidatos por empresa (top 10 por candidaturas)
+         empresa          | vagas | candidatos_distintos | candidaturas | em_andamento | candidaturas_por_vaga 
+--------------------------+-------+----------------------+--------------+--------------+-----------------------
+ Fábrica Moraes           |   206 |                 1340 |         1400 |           61 |                   6.8
+ Indústria Fernandes      |   191 |                 1311 |         1367 |           72 |                   7.2
+ Obras Monteiro           |   170 |                 1038 |         1107 |           40 |                   6.5
+ Empório Rocha            |   127 |                  927 |          954 |           58 |                   7.5
+ Empório Moreira          |   124 |                  886 |          906 |           26 |                   7.3
+ Cantina Jardim Primavera |   123 |                  872 |          902 |           33 |                   7.3
+ Fábrica Cavalcanti       |   104 |                  867 |          900 |           89 |                   8.7
+ Magazine Alto da Serra   |   122 |                  854 |          879 |           69 |                   7.2
+ Trans Macedo             |   134 |                  808 |          846 |           34 |                   6.3
+ Construtora Santos       |   118 |                  786 |          824 |           47 |                   7.0
+
+== Q13 EMP | Vagas abertas sem nenhum candidato há mais de 30 dias (NOT EXISTS)
+ id_vaga |                     titulo                      |               empresa                | data_publicacao 
+---------+-------------------------------------------------+--------------------------------------+-----------------
+   22975 | Administrador de banco de dados                 | Soft Martins                         | 2024-03-18
+   18486 | Gerente de projetos de tecnologia da informação | Grupo Barbosa                        | 2024-03-28
+   17107 | Atendente de lojas e mercados                   | Comércio de Alimentos Fernandes S.A. | 2024-04-08
+     459 | Atendente de agência                            | Luiz Duarte Reis 31994201            | 2024-05-10
+    3691 | Barman                                          | Sabor Parque das Águas               | 2024-06-19
+   19031 | Analista financeiro (instituições financeiras)  | Apoio Jardim América                 | 2024-06-23
+    5810 | Administrador                                   | Consult Gomes                        | 2024-06-25
+    7194 | Auxiliar de logística                           | Hortifruti Ramos S.A.                | 2024-07-07
+   36795 | Operador de telemarketing ativo e receptivo     | Soft Rodrigues                       | 2024-08-31
+   10768 | Administrador                                   | Escritório Parque Tecnológico        | 2024-09-16
+
+== Q14 EMP-RNF04 | Tempo médio entre etapas do processo seletivo (historico + LEAD)
+   etapa    | proxima_etapa | transicoes | dias_medios 
+------------+---------------+------------+-------------
+ ENVIADA    | EM_ANALISE    |     163859 |         9.4
+ EM_ANALISE | ENTREVISTA    |      84413 |         7.1
+ ENVIADA    | RECUSADA      |      74157 |        14.0
+ EM_ANALISE | RECUSADA      |      64563 |         9.4
+ ENTREVISTA | APROVADA      |      39645 |         5.8
+ ENTREVISTA | RECUSADA      |      36758 |         7.0
+ APROVADA   | CONTRATADA    |      28214 |         5.5
+ ENVIADA    | CANCELADA     |      12311 |        14.5
+ EM_ANALISE | CANCELADA     |      10641 |         9.8
+ APROVADA   | RECUSADA      |       9181 |         5.4
+ ENTREVISTA | CANCELADA     |       6142 |         7.1
+ APROVADA   | CANCELADA     |       1595 |         6.1
+
+== Q15 EMP | Salário médio contratado x salário médio ofertado por escolaridade mínima
+  escolaridade_minima   | vagas | salario_medio_ofertado | salario_medio_contratado 
+------------------------+-------+------------------------+--------------------------
+ Fundamental incompleto |  3960 |                2159.86 |                  2157.45
+ Fundamental completo   |  9823 |                2432.87 |                  2428.93
+ Médio completo         | 19219 |                2708.39 |                  2731.63
+ Superior incompleto    |   172 |                5003.72 |                  4921.02
+ Superior completo      |  5127 |                6720.11 |                  6783.29
+
+== Q16 ASS | Slide do professor: benefícios concedidos
+  codigo   |                          programa                          |  esfera   | ativos | suspensos | encerrados | valor_mensal_total | valor_medio 
+-----------+------------------------------------------------------------+-----------+--------+-----------+------------+--------------------+-------------
+ ALIMENTA  | Cartão Alimentação Municipal                               | MUNICIPAL |  26537 |       824 |       3161 |         4776660.00 |      180.00
+ PBF       | Programa Bolsa Família                                     | FEDERAL   |  18580 |       597 |       3053 |        12553500.00 |      675.65
+ MATERIAL  | Auxílio Material Escolar                                   | MUNICIPAL |  12705 |       388 |       3090 |         1524600.00 |      120.00
+ QUALIFICA | Qualifica Nova Esperança                                   | MUNICIPAL |   7400 |       238 |          0 |         2220000.00 |      300.00
+ BPC-IDOSO | Benefício de Prestação Continuada - Pessoa Idosa           | FEDERAL   |   3579 |       101 |          0 |         5801559.00 |     1621.00
+ BPC-PCD   | Benefício de Prestação Continuada - Pessoa com Deficiência | FEDERAL   |   2854 |       112 |          0 |         4626334.00 |     1621.00
+
+== Q17 ASS-RF07 | Slide do professor: famílias atendidas por programa
+  codigo   |                          programa                          | familias_atendidas | beneficiarios | renda_per_capita_media 
+-----------+------------------------------------------------------------+--------------------+---------------+------------------------
+ ALIMENTA  | Cartão Alimentação Municipal                               |              26537 |         26537 |                 352.02
+ PBF       | Programa Bolsa Família                                     |              18580 |         18580 |                  24.20
+ MATERIAL  | Auxílio Material Escolar                                   |              12705 |         12705 |                 395.36
+ QUALIFICA | Qualifica Nova Esperança                                   |               7090 |          7400 |                 322.79
+ BPC-IDOSO | Benefício de Prestação Continuada - Pessoa Idosa           |               3150 |          3579 |                  44.58
+ BPC-PCD   | Benefício de Prestação Continuada - Pessoa com Deficiência |               2760 |          2854 |                 135.78
+
+== Q18 ASS-RF08 | Slide do professor: atendimentos por região no ano (GROUPING SETS)
+ regiao | atendimentos | pessoas_atendidas 
+--------+--------------+-------------------
+ Centro |         6844 |              3350
+ Leste  |        16293 |              8050
+ Norte  |        13079 |              6614
+ Oeste  |        12637 |              6381
+ Sul    |        12379 |              6164
+ TOTAL  |        61232 |             30559
+
+== Q19 ASS-RF06 | Histórico de atendimentos de um beneficiário (mais recente primeiro)
+ data_hora  |              tipo              |       unidade       |       profissional       | encaminhamento  
+------------+--------------------------------+---------------------+--------------------------+-----------------
+ 2026-10-15 | Acompanhamento familiar (PAIF) | CREAS Zona Leste    | Maria Prado Paiva        | 
+ 2026-09-21 | Acompanhamento familiar (PAIF) | CRAS Vila Esperança | Valdeci Batista Oliveira | 
+ 2026-08-25 | Atendimento psicossocial       | CRAS Vila Esperança | André Oliveira Ferreira  | 
+ 2026-08-17 | Orientação sobre benefícios    | CRAS Vila Esperança | Cristina Lima Silva      | 
+ 2026-08-11 | Atualização cadastral          | CRAS Vila Esperança | Madalena Lopes Silva     | 
+ 2026-08-10 | Visita domiciliar              | CRAS Vila Esperança | Rafaela Mendes Gomes     | 
+ 2026-05-31 | Acompanhamento familiar (PAIF) | CRAS Vila Esperança | André Oliveira Ferreira  | 
+ 2026-04-21 | Atualização cadastral          | CRAS Vila Esperança | Rosangela Pacheco Souza  | Agência do INSS
+ 2026-02-20 | Acolhida                       | CRAS Vila Esperança | Rosangela Pacheco Souza  | 
+ 2026-01-14 | Orientação sobre benefícios    | CRAS Vila Esperança | Rafaela Mendes Gomes     | 
+
+== Q20 ASS-RN04 | Busca ativa: famílias elegíveis ao Bolsa Família que ainda não recebem (integração CID x EDU x ASS)
+       bairro        | familias_elegiveis_sem_pbf 
+---------------------+----------------------------
+ Vila Esperança      |                        209
+ Vila Operária       |                        179
+ Vila União          |                        177
+ Boa Esperança       |                        162
+ Nova Aurora         |                        158
+ São Judas           |                        136
+ Morada do Sol       |                        121
+ Santa Clara         |                        117
+ Distrito Industrial |                        112
+ Jardim América      |                        109
+
+== Q21 ASS x EDU | Crianças de 7 a 14 anos de famílias atendidas fora da rede municipal (risco de perder o PBF)
+ regiao | criancas_fora_da_rede 
+--------+-----------------------
+ Leste  |                   502
+ Oeste  |                   395
+ Norte  |                   386
+ Sul    |                   374
+ Centro |                   216
+
+== Q22 ASS x EMP | Beneficiários que conseguiram emprego, por programa
+                          programa                          | beneficiarios_ativos | no_cadastro_de_emprego | contratados | taxa_contratacao_pct 
+------------------------------------------------------------+----------------------+------------------------+-------------+----------------------
+ Programa Bolsa Família                                     |                18580 |                   4607 |        2736 |                 59.4
+ Benefício de Prestação Continuada - Pessoa Idosa           |                 3579 |                      0 |           0 |                     
+ Benefício de Prestação Continuada - Pessoa com Deficiência |                 2854 |                    704 |         414 |                 58.8
+ Qualifica Nova Esperança                                   |                 7400 |                   7400 |        4323 |                 58.4
+ Auxílio Material Escolar                                   |                12705 |                   2541 |        1526 |                 60.1
+ Cartão Alimentação Municipal                               |                26537 |                   5263 |        3087 |                 58.7
+
+== Q23 ASS x EMP | Vagas abertas compatíveis com beneficiários do Qualifica (LATERAL: top 3 por pessoa)
+     beneficiario      |     escolaridade     |       titulo       | salario 
+-----------------------+----------------------+--------------------+---------
+ Júlio Santos Cunha    | Médio incompleto     | Soldador           | 3838.81
+ Júlio Santos Cunha    | Médio incompleto     | Soldador           | 3676.20
+ Júlio Santos Cunha    | Médio incompleto     | Soldador           | 3602.03
+ Pedro Correia Batista | Médio incompleto     | Telefonista        | 2205.92
+ Pedro Correia Batista | Médio incompleto     | Telefonista        | 2196.60
+ Pedro Correia Batista | Médio incompleto     | Telefonista        | 2196.21
+ Juan Lima Lima        | Fundamental completo | Cuidador de idosos | 2457.64
+ Juan Lima Lima        | Fundamental completo | Cuidador de idosos | 2245.01
+ Juan Lima Lima        | Fundamental completo | Cuidador de idosos | 2232.32
+
+== Q24 Integração | Painel territorial dos 4 módulos (visão materializada)
+ regiao |        bairro         | habitantes | beneficiarios | pbf_por_mil_hab | alunos_rede_municipal | candidatos_emprego | vagas_abertas_no_bairro 
+--------+-----------------------+------------+---------------+-----------------+-----------------------+--------------------+-------------------------
+ Leste  | Vila União            |      31732 |          8016 |            53.8 |                  3351 |               3671 |                      74
+ Norte  | Vila Esperança        |      32894 |          8141 |            51.4 |                  3498 |               3795 |                     104
+ Oeste  | Boa Esperança         |      29232 |          6704 |            47.8 |                  3171 |               3333 |                      90
+ Sul    | Vila Operária         |      30011 |          6538 |            46.4 |                  3101 |               3330 |                     117
+ Oeste  | Distrito Industrial   |      22251 |          4425 |            44.1 |                  2293 |               2368 |                     268
+ Leste  | São Judas             |      27790 |          5503 |            43.0 |                  2867 |               3029 |                     127
+ Norte  | Nova Aurora           |      30556 |          5778 |            40.5 |                  3128 |               3197 |                      67
+ Sul    | Jardim Primavera      |      27356 |          4498 |            39.0 |                  2747 |               2184 |                     102
+ Leste  | Morada do Sol         |      24770 |          4319 |            38.9 |                  2492 |               2464 |                      61
+ Sul    | Santa Clara           |      25319 |          3365 |            34.4 |                  2561 |               1978 |                     103
+ Oeste  | Jardim América        |      25475 |          3537 |            34.2 |                  2593 |               2118 |                      65
+ Leste  | Residencial Horizonte |      23194 |          2979 |            33.7 |                  2291 |               1777 |                      62
+ Centro | Cidade Nova           |      27003 |          3155 |            33.0 |                  2580 |               2014 |                     164
+ Norte  | Alto da Serra         |      22701 |          2465 |            31.3 |                  2193 |               1678 |                      79
+ Oeste  | Parque das Águas      |      19749 |          2049 |            27.5 |                  1937 |               1403 |                      45
+ Sul    | Lagoa Dourada         |      17719 |          1645 |            26.2 |                  1652 |               1206 |                      85
+ Centro | Bela Vista            |      22572 |          1912 |            24.7 |                  2067 |               1470 |                     204
+ Centro | Centro                |      24896 |          2179 |            24.5 |                  2328 |               1617 |                     319
+ Centro | Jardim das Acácias    |      19783 |          1152 |            19.5 |                  1802 |               1135 |                     139
+ Norte  | Parque Tecnológico    |      14997 |           820 |            17.5 |                  1358 |                823 |                     243
+
+== Q25 GER-RNF03 | Trilha de auditoria por tabela e operação
+ esquema | tabela | operacao | registros | ultima 
+---------+--------+----------+-----------+--------
+

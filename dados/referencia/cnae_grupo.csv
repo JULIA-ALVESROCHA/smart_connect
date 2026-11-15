@@ -1,0 +1,286 @@
+cod_grupo,descricao,cod_divisao
+011,Produção de Lavouras Temporárias,01
+012,Horticultura e Floricultura,01
+013,Produção de Lavouras Permanentes,01
+014,Produção de Sementes e Mudas Certificadas,01
+015,Pecuária,01
+016,Atividades de Apoio À Agricultura e À Pecuária; Atividades de Pós-colheita,01
+017,Caça e Serviços Relacionados,01
+021,Produção Florestal - Florestas Plantadas,02
+022,Produção Florestal - Florestas Nativas,02
+023,Atividades de Apoio À Produção Florestal,02
+031,Pesca,03
+032,Aqüicultura,03
+050,Extração de Carvão Mineral,05
+060,Extração de Petróleo e Gás Natural,06
+071,Extração de Minério de Ferro,07
+072,Extração de Minerais Metálicos Não-ferrosos,07
+081,"Extração de Pedra, Areia e Argila",08
+089,Extração de Outros Minerais Não-metálicos,08
+091,Atividades de Apoio À Extração de Petróleo e Gás Natural,09
+099,"Atividades de Apoio À Extração de Minerais, Exceto Petróleo e Gás Natural",09
+101,Abate e Fabricação de Produtos de Carne,10
+102,Preservação do Pescado e Fabricação de Produtos do Pescado,10
+103,"Fabricação de Conservas de Frutas, Legumes e Outros Vegetais",10
+104,Fabricação de Óleos e Gorduras Vegetais e Animais,10
+105,Laticínios,10
+106,"Moagem, Fabricação de Produtos Amiláceos e de Alimentos para Animais",10
+107,Fabricação e Refino de Açúcar,10
+108,Torrefação e Moagem de Café,10
+109,Fabricação de Outros Produtos Alimentícios,10
+111,Fabricação de Bebidas Alcoólicas,11
+112,Fabricação de Bebidas Não-alcoólicas,11
+121,Processamento Industrial do Fumo,12
+122,Fabricação de Produtos do Fumo,12
+131,Preparação e Fiação de Fibras Têxteis,13
+132,"Tecelagem, Exceto Malha",13
+133,Fabricação de Tecidos de Malha,13
+134,"Acabamentos em Fios, Tecidos e Artefatos Têxteis",13
+135,"Fabricação de Artefatos Têxteis, Exceto Vestuário",13
+141,Confecção de Artigos do Vestuário e Acessórios,14
+142,Fabricação de Artigos de Malharia e Tricotagem,14
+151,Curtimento e Outras Preparações de Couro,15
+152,Fabricação de Artigos para Viagem e de Artefatos Diversos de Couro,15
+153,Fabricação de Calçados,15
+154,"Fabricação de Partes para Calçados, de Qualquer Material",15
+161,Desdobramento de Madeira,16
+162,"Fabricação de Produtos de Madeira, Cortiça e Material Trançado, Exceto Móveis",16
+171,Fabricação de Celulose e Outras Pastas para a Fabricação de Papel,17
+172,"Fabricação de Papel, Cartolina e Papel-cartão",17
+173,"Fabricação de Embalagens de Papel, Cartolina, Papel-cartão e Papelão Ondulado",17
+174,"Fabricação de Produtos Diversos de Papel, Cartolina, Papel-cartão e Papelão Ondulado",17
+181,Atividade de Impressão,18
+182,Serviços de Pré-impressão e Acabamentos Gráficos,18
+183,Reprodução de Materiais Gravados em Qualquer Suporte,18
+191,Coquerias,19
+192,Fabricação de Produtos Derivados do Petróleo,19
+193,Fabricação de Biocombustíveis,19
+201,Fabricação de Produtos Químicos Inorgânicos,20
+202,Fabricação de Produtos Químicos Orgânicos,20
+203,Fabricação de Resinas e Elastômeros,20
+204,Fabricação de Fibras Artificiais e Sintéticas,20
+205,Fabricação de Defensivos Agrícolas e Desinfestantes Domissanitários,20
+206,"Fabricação de Sabões, Detergentes, Produtos de Limpeza, Cosméticos, Produtos de Perfumaria e de Higiene Pessoal",20
+207,"Fabricação de Tintas, Vernizes, Esmaltes, Lacas e Produtos Afins",20
+209,Fabricação de Produtos e Preparados Químicos Diversos,20
+211,Fabricação de Produtos Farmoquímicos,21
+212,Fabricação de Produtos Farmacêuticos,21
+221,Fabricação de Produtos de Borracha,22
+222,Fabricação de Produtos de Material Plástico,22
+231,Fabricação de Vidro e de Produtos do Vidro,23
+232,Fabricação de Cimento,23
+233,"Fabricação de Artefatos de Concreto, Cimento, Fibrocimento, Gesso e Materiais Semelhantes",23
+234,Fabricação de Produtos Cerâmicos,23
+239,Aparelhamento de Pedras e Fabricação de Outros Produtos de Minerais Não-metálicos,23
+241,Produção de Ferro-gusa e de Ferroligas,24
+242,Siderurgia,24
+243,"Produção de Tubos de Aço, Exceto Tubos Sem Costura",24
+244,Metalurgia dos Metais Não-ferrosos,24
+245,Fundição,24
+251,Fabricação de Estruturas Metálicas e Obras de Caldeiraria Pesada,25
+252,"Fabricação de Tanques, Reservatórios Metálicos e Caldeiras",25
+253,"Forjaria, Estamparia, Metalurgia do Pó e Serviços de Tratamento de Metais",25
+254,"Fabricação de Artigos de Cutelaria, de Serralheria e Ferramentas",25
+255,"Fabricação de Equipamento Bélico Pesado, Armas e Munições",25
+259,Fabricação de Produtos de Metal Não Especificados Anteriormente,25
+261,Fabricação de Componentes Eletrônicos,26
+262,Fabricação de Equipamentos de Informática e Periféricos,26
+263,Fabricação de Equipamentos de Comunicação,26
+264,"Fabricação de Aparelhos de Recepção, Reprodução, Gravação e Amplificação de Áudio e Vídeo",26
+265,"Fabricação de Aparelhos e Instrumentos de Medida, Teste e Controle; Cronômetros e Relógios",26
+266,Fabricação de Aparelhos Eletromédicos e Eletroterapêuticos e Equipamentos de Irradiação,26
+267,"Fabricação de Equipamentos e Instrumentos Ópticos, Fotográficos e Cinematográficos",26
+268,"Fabricação de Mídias Virgens, Magnéticas e Ópticas",26
+271,"Fabricação de Geradores, Transformadores e Motores Elétricos",27
+272,"Fabricação de Pilhas, Baterias e Acumuladores Elétricos",27
+273,Fabricação de Equipamentos para Distribuição e Controle de Energia Elétrica,27
+274,Fabricação de Lâmpadas e Outros Equipamentos de Iluminação,27
+275,Fabricação de Eletrodomésticos,27
+279,Fabricação de Equipamentos e Aparelhos Elétricos Não Especificados Anteriormente,27
+281,"Fabricação de Motores, Bombas, Compressores e Equipamentos de Transmissão",28
+282,Fabricação de Máquinas e Equipamentos de Uso Geral,28
+283,Fabricação de Tratores e de Máquinas e Equipamentos para a Agricultura e Pecuária,28
+284,Fabricação de Máquinas-ferramenta,28
+285,Fabricação de Máquinas e Equipamentos de Uso na Extração Mineral e na Construção,28
+286,Fabricação de Máquinas e Equipamentos de Uso Industrial Específico,28
+291,"Fabricação de Automóveis, Camionetas e Utilitários",29
+292,Fabricação de Caminhões e Ônibus,29
+293,"Fabricação de Cabines, Carrocerias e Reboques para Veículos Automotores",29
+294,Fabricação de Peças e Acessórios para Veículos Automotores,29
+295,Recondicionamento e Recuperação de Motores para Veículos Automotores,29
+301,Construção de Embarcações,30
+303,Fabricação de Veículos Ferroviários,30
+304,Fabricação de Aeronaves,30
+305,Fabricação de Veículos Militares de Combate,30
+309,Fabricação de Equipamentos de Transporte Não Especificados Anteriormente,30
+310,Fabricação de Móveis,31
+321,"Fabricação de Artigos de Joalheria, Bijuteria e Semelhantes",32
+322,Fabricação de Instrumentos Musicais,32
+323,Fabricação de Artefatos para Pesca e Esporte,32
+324,Fabricação de Brinquedos e Jogos Recreativos,32
+325,Fabricação de Instrumentos e Materiais para Uso Médico e Odontológico e de Artigos Ópticos,32
+329,Fabricação de Produtos Diversos,32
+331,Manutenção e Reparação de Máquinas e Equipamentos,33
+332,Instalação de Máquinas e Equipamentos,33
+351,"Geração, Transmissão e Distribuição de Energia Elétrica",35
+352,Produção e Distribuição de Combustíveis Gasosos por Redes Urbanas,35
+353,"Produção e Distribuição de Vapor, Água Quente e Ar Condicionado",35
+360,"Captação, Tratamento e Distribuição de Água",36
+370,Esgoto e Atividades Relacionadas,37
+381,Coleta de Resíduos,38
+382,Tratamento e Disposição de Resíduos,38
+383,Recuperação de Materiais,38
+390,Descontaminação e Outros Serviços de Gestão de Resíduos,39
+411,Incorporação de Empreendimentos Imobiliários,41
+412,Construção de Edifícios,41
+421,"Construção de Rodovias, Ferrovias, Obras Urbanas e Obras-de-arte Especiais",42
+422,"Obras de Infra-estrutura para Energia Elétrica, Telecomunicações, Água, Esgoto e Transporte por Dutos",42
+429,Construção de Outras Obras de Infra-estrutura,42
+431,Demolição e Preparação do Terreno,43
+432,"Instalações Elétricas, Hidráulicas e Outras Instalações em Construções",43
+433,Obras de Acabamento,43
+439,Outros Serviços Especializados para Construção,43
+451,Comércio de Veículos Automotores,45
+452,Manutenção e Reparação de Veículos Automotores,45
+453,Comércio de Peças e Acessórios para Veículos Automotores,45
+454,"Comércio, Manutenção e Reparação de Motocicletas, Peças e Acessórios",45
+461,"Representantes Comerciais e Agentes do Comércio, Exceto de Veículos Automotores e Motocicletas",46
+462,Comércio Atacadista de Matérias-primas Agrícolas e Animais Vivos,46
+463,"Comércio Atacadista Especializado em Produtos Alimentícios, Bebidas e Fumo",46
+464,Comércio Atacadista de Produtos de Consumo Não-alimentar,46
+465,Comércio Atacadista de Equipamentos e Produtos de Tecnologias de Informação e Comunicação,46
+466,"Comércio Atacadista de Máquinas, Aparelhos e Equipamentos, Exceto de Tecnologias de Informação e Comunicação",46
+467,"Comércio Atacadista de Madeira, Ferragens, Ferramentas, Material Elétrico e Material de Construção",46
+468,Comércio Atacadista Especializado em Outros Produtos,46
+469,Comércio Atacadista Não-especializado,46
+471,Comércio Varejista Não-especializado,47
+472,"Comércio Varejista de Produtos Alimentícios, Bebidas e Fumo",47
+473,Comércio Varejista de Combustíveis para Veículos Automotores,47
+474,Comércio Varejista de Material de Construção,47
+475,Comércio Varejista de Equipamentos de Informática e Comunicação; Equipamentos e Artigos de Uso Doméstico,47
+476,"Comércio Varejista de Artigos Culturais, Recreativos e Esportivos",47
+477,"Comércio Varejista de Produtos Farmacêuticos, Perfumaria e Cosméticos e Artigos Médicos, Ópticos e Ortopédicos",47
+478,Comércio Varejista de Produtos Novos Não Especificados Anteriormente e de Produtos Usados,47
+479,Comércio Ambulante e Outros Tipos de Comércio Varejista,47
+491,Transporte Ferroviário e Metroferroviário,49
+492,Transporte Rodoviário de Passageiros,49
+493,Transporte Rodoviário de Carga,49
+494,Transporte Dutoviário,49
+495,"Trens Turísticos, Teleféricos e Similares",49
+501,Transporte Marítimo de Cabotagem e Longo Curso,50
+502,Transporte por Navegação Interior,50
+503,Navegação de Apoio,50
+509,Outros Transportes Aquaviários,50
+511,Transporte Aéreo de Passageiros,51
+512,Transporte Aéreo de Carga,51
+513,Transporte Espacial,51
+521,"Armazenamento, Carga e Descarga",52
+522,Atividades Auxiliares dos Transportes Terrestres,52
+523,Atividades Auxiliares dos Transportes Aquaviários,52
+524,Atividades Auxiliares dos Transportes Aéreos,52
+525,Atividades Relacionadas À Organização do Transporte de Carga,52
+531,Atividades de Correio,53
+532,Atividades de Malote e de Entrega,53
+551,Hotéis e Similares,55
+559,Outros Tipos de Alojamento Não Especificados Anteriormente,55
+561,Restaurantes e Outros Serviços de Alimentação e Bebidas,56
+562,"Serviços de Catering, Bufê e Outros Serviços de Comida Preparada",56
+581,"Edição de Livros, Jornais, Revistas e Outras Atividades de Edição",58
+582,"Edição Integrada À Impressão de Livros, Jornais, Revistas e Outras Publicações",58
+591,"Atividades Cinematográficas, Produção de Vídeos e de Programas de Televisão",59
+592,Atividades de Gravação de Som e de Edição de Música,59
+601,Atividades de Rádio,60
+602,Atividades de Televisão,60
+611,Telecomunicações por Fio,61
+612,Telecomunicações Sem Fio,61
+613,Telecomunicações por Satélite,61
+614,Operadoras de Televisão por Assinatura,61
+619,Outras Atividades de Telecomunicações,61
+620,Atividades dos Serviços de Tecnologia da Informação,62
+631,"Tratamento de Dados, Hospedagem na Internet e Outras Atividades Relacionadas",63
+639,Outras Atividades de Prestação de Serviços de Informação,63
+641,Banco Central,64
+642,Intermediação Monetária - Depósitos À Vista,64
+643,Intermediação Não-monetária - Outros Instrumentos de Captação,64
+644,Arrendamento Mercantil,64
+645,Sociedades de Capitalização,64
+646,Atividades de Sociedades de Participação,64
+647,Fundos de Investimento,64
+649,Atividades de Serviços Financeiros Não Especificadas Anteriormente,64
+651,Seguros de Vida e Não-vida,65
+652,Seguros-saúde,65
+653,Resseguros,65
+654,Previdência Complementar,65
+655,Planos de Saúde,65
+661,Atividades Auxiliares dos Serviços Financeiros,66
+662,"Atividades Auxiliares dos Seguros, da Previdência Complementar e dos Planos de Saúde",66
+663,Atividades de Administração de Fundos por Contrato Ou Comissão,66
+681,Atividades Imobiliárias de Imóveis Próprios,68
+682,Atividades Imobiliárias por Contrato Ou Comissão,68
+691,Atividades Jurídicas,69
+692,"Atividades de Contabilidade, Consultoria e Auditoria Contábil e Tributária",69
+701,Sedes de Empresas e Unidades Administrativas Locais,70
+702,Atividades de Consultoria em Gestão Empresarial,70
+711,Serviços de Arquitetura e Engenharia e Atividades Técnicas Relacionadas,71
+712,Testes e Análises Técnicas,71
+721,Pesquisa e Desenvolvimento Experimental em Ciências Físicas e Naturais,72
+722,Pesquisa e Desenvolvimento Experimental em Ciências Sociais e Humanas,72
+731,Publicidade,73
+732,Pesquisas de Mercado e de Opinião Pública,73
+741,Design e Decoração de Interiores,74
+742,Atividades Fotográficas e Similares,74
+749,"Atividades Profissionais, Científicas e Técnicas Não Especificadas Anteriormente",74
+750,Atividades Veterinárias,75
+771,Locação de Meios de Transporte Sem Condutor,77
+772,Aluguel de Objetos Pessoais e Domésticos,77
+773,Aluguel de Máquinas e Equipamentos Sem Operador,77
+774,Gestão de Ativos Intangíveis Não-financeiros,77
+781,Seleção e Agenciamento de Mão-de-obra,78
+782,Locação de Mão-de-obra Temporária,78
+783,Fornecimento e Gestão de Recursos Humanos para Terceiros,78
+791,Agências de Viagens e Operadores Turísticos,79
+799,Serviços de Reservas e Outros Serviços de Turismo Não Especificados Anteriormente,79
+801,"Atividades de Vigilância, Segurança Privada e Transporte de Valores",80
+802,Atividades de Monitoramento de Sistemas de Segurança,80
+803,Atividades de Investigação Particular,80
+811,Serviços Combinados para Apoio a Edifícios,81
+812,Atividades de Limpeza,81
+813,Atividades Paisagísticas,81
+821,Serviços de Escritório e Apoio Administrativo,82
+822,Atividades de Teleatendimento,82
+823,"Atividades de Organização de Eventos, Exceto Culturais e Esportivos",82
+829,Outras Atividades de Serviços Prestados Principalmente Às Empresas,82
+841,Administração do Estado e da Política Econômica e Social,84
+842,Serviços Coletivos Prestados Pela Administração Pública,84
+843,Seguridade Social Obrigatória,84
+851,Educação Infantil e Ensino Fundamental,85
+852,Ensino Médio,85
+853,Educação Superior,85
+854,Educação Profissional de Nível Técnico e Tecnológico,85
+855,Atividades de Apoio À Educação,85
+859,Outras Atividades de Ensino,85
+861,Atividades de Atendimento Hospitalar,86
+862,Serviços Móveis de Atendimento a Urgências e de Remoção de Pacientes,86
+863,Atividades de Atenção Ambulatorial Executadas por Médicos e Odontólogos,86
+864,Atividades de Serviços de Complementação Diagnóstica e Terapêutica,86
+865,"Atividades de Profissionais da Área de Saúde, Exceto Médicos e Odontólogos",86
+866,Atividades de Apoio À Gestão de Saúde,86
+869,Atividades de Atenção À Saúde Humana Não Especificadas Anteriormente,86
+871,"Atividades de Assistência a Idosos, Deficientes Físicos, Imunodeprimidos e Convalescentes, e de Infra-estrutura e Apoio a Pacientes Prestadas em Residências Coletivas e Particulares",87
+872,"Atividades de Assistência Psicossocial e À Saúde a Portadores de Distúrbios Psíquicos, Deficiência Mental e Dependência Química",87
+873,Atividades de Assistência Social Prestadas em Residências Coletivas e Particulares,87
+880,Serviços de Assistência Social Sem Alojamento,88
+900,"Atividades Artísticas, Criativas e de Espetáculos",90
+910,Atividades Ligadas Ao Patrimônio Cultural e Ambiental,91
+920,Atividades de Exploração de Jogos de Azar e Apostas,92
+931,Atividades Esportivas,93
+932,Atividades de Recreação e Lazer,93
+941,"Atividades de Organizações Associativas Patronais, Empresariais e Profissionais",94
+942,Atividades de Organizações Sindicais,94
+943,Atividades de Associações de Defesa de Direitos Sociais,94
+949,Atividades de Organizações Associativas Não Especificadas Anteriormente,94
+951,Reparação e Manutenção de Equipamentos de Informática e Comunicação,95
+952,Reparação e Manutenção de Objetos e Equipamentos Pessoais e Domésticos,95
+960,Outras Atividades de Serviços Pessoais,96
+970,Serviços Domésticos,97
+990,Organismos Internacionais e Outras Instituições Extraterritoriais,99

@@ -1,0 +1,5 @@
+backup: backups/smartcity_20261115_1636.dump (65M)
+NOTICE:  database "smartcity_restore_teste" does not exist, skipping
+origem:     atendimento=185834 auditoria=0 candidatura=256307 cidadao=500000 matricula=1054359
+restaurado: atendimento=185834 auditoria=0 candidatura=256307 cidadao=500000 matricula=1054359
+restauracao verificada: contagens identicas
